@@ -46,12 +46,16 @@ class ControllerCommonCart extends Controller {
 
 			array_multisort($sort_order, SORT_ASC, $totals);
 		}
-
+		$data['text_items_total_price']= round($total*$this->currency->getValue($this->config->get('config_currency')),2);
+		if($this->currency->getSymbolLeft($this->session->data['currency'])!=""){
+		$data['text_items_cur_price']=$this->currency->getSymbolLeft($this->session->data['currency']);}
+		else{
+		$data['text_items_cur_price']=$this->currency->getSymbolRight($this->session->data['currency']);}
 		$data['text_empty'] = $this->language->get('text_empty');
 		$data['text_cart'] = $this->language->get('text_cart');
 		$data['text_checkout'] = $this->language->get('text_checkout');
 		$data['text_recurring'] = $this->language->get('text_recurring');
-		$data['text_items'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+		$data['text_items'] = sprintf($this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0));
 		$data['text_loading'] = $this->language->get('text_loading');
 
 		$data['button_remove'] = $this->language->get('button_remove');
@@ -138,8 +142,12 @@ class ControllerCommonCart extends Controller {
 		}
 
 		$data['cart'] = $this->url->link('checkout/cart');
+		$data['currency'] = $this->load->controller('common/currency');
 		$data['checkout'] = $this->url->link('checkout/checkout', '', true);
 
+		$this->children = array(
+			'module/currency',
+			);
 		return $this->load->view('common/cart', $data);
 	}
 

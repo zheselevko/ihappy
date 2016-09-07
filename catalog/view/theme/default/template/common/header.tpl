@@ -17,12 +17,27 @@
 <?php if ($keywords) { ?>
 <meta name="keywords" content= "<?php echo $keywords; ?>" />
 <?php } ?>
-<script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script src="catalog/view/theme/default/js/jquery-ui.js"></script>
 <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
 <link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/css/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/css/jquery.sb.css" />
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/css/pikachoose.css" />
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/css/style.css" />
+
+    <script src="catalog/view/theme/default/js/jquery.fancybox.pack.js"></script>
+    <script src="catalog/view/theme/default/js/jquery.sb.js"></script>
+    <script src="catalog/view/theme/default/js/jquery.carouFredSel-6.1.0-packed.js"></script>
+    <script src="catalog/view/theme/default/js/ti_custom_checkbox.js"></script>
+   <script src="catalog/view/theme/default/js/jquery.pikachoose.min.js"></script>
+   
+    <script src="catalog/view/theme/default/js/jquery.jcarousel.min.js"></script>
+    <script src="catalog/view/theme/default/js/scripts.js"></script>
 <?php foreach ($styles as $style) { ?>
 <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
@@ -33,56 +48,87 @@
 <?php foreach ($scripts as $script) { ?>
 <script src="<?php echo $script; ?>" type="text/javascript"></script>
 <?php } ?>
+
 <?php foreach ($analytics as $analytic) { ?>
 <?php echo $analytic; ?>
 <?php } ?>
 </head>
 <body class="<?php echo $class; ?>">
-<nav id="top">
-  <div class="container">
-    <?php echo $currency; ?>
-    <?php echo $language; ?>
-    <div id="top-links" class="nav pull-right">
-      <ul class="list-inline">
-        <li><a href="<?php echo $contact; ?>"><i class="fa fa-phone"></i></a> <span class="hidden-xs hidden-sm hidden-md"><?php echo $telephone; ?></span></li>
-        <li class="dropdown"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_account; ?></span> <span class="caret"></span></a>
-          <ul class="dropdown-menu dropdown-menu-right">
-            <?php if ($logged) { ?>
-            <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
-            <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
-            <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
-            <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
-            <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
-            <?php } else { ?>
-            <li><a href="<?php echo $register; ?>"><?php echo $text_register; ?></a></li>
-            <li><a href="<?php echo $login; ?>"><?php echo $text_login; ?></a></li>
-            <?php } ?>
-          </ul>
-        </li>
-        <li><a href="<?php echo $wishlist; ?>" id="wishlist-total" title="<?php echo $text_wishlist; ?>"><i class="fa fa-heart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_wishlist; ?></span></a></li>
-        <li><a href="<?php echo $shopping_cart; ?>" title="<?php echo $text_shopping_cart; ?>"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_shopping_cart; ?></span></a></li>
-        <li><a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><i class="fa fa-share"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_checkout; ?></span></a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<header>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-4">
-        <div id="logo">
-          <?php if ($logo) { ?>
-          <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
-          <?php } else { ?>
-          <h1><a href="<?php echo $home; ?>"><?php echo $name; ?></a></h1>
-          <?php } ?>
-        </div>
-      </div>
-      <div class="col-sm-5"><?php echo $search; ?>
-      </div>
-      <div class="col-sm-3"><?php echo $cart; ?></div>
-    </div>
-  </div>
+<div id="page">
+<div id="back_call">
+<div>
+<div id="close_back_call">x</div>
+<div style="pading-top: 0px;" class="popup_body" id="divForm">
+                <div class="pagename">
+                    Обратный звонок</div>
+                <div class="f_line h clear">
+                    <label class="fl">
+                        Телефон*</label>
+                    <input type="text" maxlength="100" class="loginInpt fl req" id="tbPhone" name="tbPhone">
+                    <span style="color:Red;visibility:hidden;" class="label_required fr" id="RequiredFieldValidator2"></span>
+                </div>
+                <div class="f_line h clear">
+                    <label class="fl">
+                        Ваше имя*</label>
+                    <input type="text" maxlength="100" class="loginInpt fl req" id="tbName" name="tbName">
+                    <span style="color:Red;visibility:hidden;" class="label_required fr" id="RequiredFieldValidator1"></span>
+                    <!--
+                    <div class="label_required fr">
+                    </div>-->
+                </div>
+                <div class="f_line h clear">
+                    <label class="fl">
+                        Город</label>
+                    <input type="text" maxlength="100" class="loginInpt fl" id="tbCity" name="tbCity">
+                </div>
+                <div class="f_line h clear inline">
+                    <label class="fl">
+                        Удобное время</label>
+                    <div style="padding: 0 55px" class="fl">
+                        c
+                    </div>
+                    <input type="text" style="left: 180px; width: 40px;" maxlength="20" class="loginInpt fl" id="tbFrom" name="tbFrom">
+                    <div style="padding: 0 5px" class="fl">
+                        по
+                    </div>
+                    <input type="text" style="width: 40px; left: 257px;" maxlength="20" class="loginInpt fl" id="tbTo" name="tbTo">
+                    <span style="color:Red;visibility:hidden;" class="label_required fr" id="valTo"></span>
+                    <span style="color:Red;display:none;" class="label_required fr" id="valFrom"></span>
+                </div>
+                <div class="f_line h clear">
+                    <label style="line-height: 1.33" class="fl">
+                        Что вас интересует*</label>
+                    <textarea rows="4" cols="60" type="text" class="req fl" id="tbMessage" name="tbMessage"></textarea>
+                </div>
+                <div class="button" id="fedb_call_b">
+                    Заказать
+                </div>
+            </div>
+</div>
+</div>
+<header id="header">
+
+    <div class="top-nav o-shell">
+                <div class="phones aleft"><?=$telephone?></div>
+                <a id="fedb_call_head" href="#" title="обратный звонок" class="order-call aleft">обратный звонок</a>
+                <ul class="top-menu aright">
+                    <li><a href="index.php?route=information/information&information_id=6" title="доставка и оплата">доставка и оплата</a></li>
+                    <li><a href="/index.php?route=information/information&information_id=4" title="о компании">о компании</a></li>
+                    <li><a href="/index.php?route=information/contact" title="контакты">контакты</a></li>
+                    <?php if (!$logged) { ?>
+    <?php echo '<li><a href="/index.php?route=account/login" title="">войти на сайт</a></li>'; ?>
+    <?php } else { ?>
+    <?php /*echo $text_logged; */
+  echo '<li><a href="/index.php?route=account/account" title="">личный кабинет</a></li>'; 
+  ?>
+    <?php } ?>
+  
+                </ul>
+            </div>
+       <div class="header-mid">
+      <?php echo $cart;?>
+                <a href="/" title="" class="logo">интернет-магазин <span>аксессуаров для мобильных устройств</span></a>
+            </div>
 </header>
 <?php if ($categories) { ?>
 <div class="container">

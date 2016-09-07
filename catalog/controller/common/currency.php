@@ -45,14 +45,14 @@ class ControllerCommonCurrency extends Controller {
 
 			$data['redirect'] = $this->url->link($route, $url, $this->request->server['HTTPS']);
 		}
-
+		$data['this_cur']=$this->session->data['currency'];
 		return $this->load->view('common/currency', $data);
 	}
 
 	public function currency() {
 		if (isset($this->request->post['code'])) {
 			$this->session->data['currency'] = $this->request->post['code'];
-		
+			
 			unset($this->session->data['shipping_method']);
 			unset($this->session->data['shipping_methods']);
 		}
