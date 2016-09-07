@@ -10,7 +10,7 @@ module.exports = function(grunt) {
         host: "uashared06.twinservers.net",                  // Your FTP host
         user: "ihappy@ihappy.webformyself.co.ua",  // Your FTP user
         pass: "xoxol22s",                               // Your FTP secret-password
-        exclude: ["Gruntfile.js", "package.json", "node_modules/*","readme.md","dev/*",".htaccess"], // Убираем из деплоя на ftp ненужные там файлы
+        exclude: ["Gruntfile.js", "package.json", "node_modules/*","readme.md","dev/*",".htaccess","config.php","admin/config.php"], // Убираем из деплоя на ftp ненужные там файлы
         path: {
             local: "",          // The local folder that you want to upload
             remote: "/"          // Where the files from the local file will be uploaded at in your remote server
