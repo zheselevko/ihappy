@@ -11,5 +11,5 @@
 <?php echo $content_bottom; ?>
 </div>
 <div class="clear"></div>
-
+</div>
 <?php echo $footer; ?>
