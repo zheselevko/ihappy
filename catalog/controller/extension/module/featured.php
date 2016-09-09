@@ -14,7 +14,7 @@ class ControllerExtensionModuleFeatured extends Controller {
 		$this->load->model('catalog/product');
 
 		$this->load->model('tool/image');
-
+			$this->load->model('catalog/productall');
 		$data['products'] = array();
 
 		if (!$setting['limit']) {
@@ -67,7 +67,8 @@ class ControllerExtensionModuleFeatured extends Controller {
 						'special'     => $special,
 						'tax'         => $tax,
 						'rating'      => $rating,
-						'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id'])
+						'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id']),
+						'category'    => $this->model_catalog_productall->getProduct_cat($product_info['product_id'])
 					);
 				}
 			}

@@ -17,11 +17,9 @@
 <?php if ($keywords) { ?>
 <meta name="keywords" content= "<?php echo $keywords; ?>" />
 <?php } ?>
- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 
     <script src="catalog/view/theme/default/js/jquery-ui.js"></script>
-<link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
-<script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
 <link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
@@ -130,35 +128,21 @@
                 <a href="/" title="" class="logo">интернет-магазин <span>аксессуаров для мобильных устройств</span></a>
             </div>
 </header>
-<?php if ($categories) { ?>
-<div class="container">
-  <nav id="menu" class="navbar">
-    <div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
-      <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
-    </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav">
-        <?php foreach ($categories as $category) { ?>
-        <?php if ($category['children']) { ?>
-        <li class="dropdown"><a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category['name']; ?></a>
-          <div class="dropdown-menu">
-            <div class="dropdown-inner">
-              <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
-              <ul class="list-unstyled">
-                <?php foreach ($children as $child) { ?>
-                <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
-                <?php } ?>
-              </ul>
-              <?php } ?>
-            </div>
-            <a href="<?php echo $category['href']; ?>" class="see-all"><?php echo $text_all; ?> <?php echo $category['name']; ?></a> </div>
-        </li>
-        <?php } else { ?>
-        <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-        <?php } ?>
-        <?php } ?>
-      </ul>
-    </div>
-  </nav>
-</div>
-<?php } ?>
+<div id="notification"></div>
+<div id="main">
+  <div id="container" >     
+
+         <div class="menu-wrapper" id="main-menu">
+                    <div class="menu-container">
+                        <div class="menu-content">
+                            <ul class="menu">
+<li><a style="background-image: url(/catalog/view/theme/default/stylesheet/images/menu/Apple.png);" href="/aksessuary-apple/" class=""></a></li> 
+<li><a style="background-image: url(/catalog/view/theme/default/stylesheet/images/menu/HTC.png);" href="/aksessuary-dlya-htc/" class=""></a></li>   
+<li><a style="background-image: url(/catalog/view/theme/default/stylesheet/images/menu/Nokia.png);" href="/aksessuary-dlya-nokia/" class=""></a></li>   
+<li><a style="background-image: url(/catalog/view/theme/default/stylesheet/images/menu/Samsung.png);" href="/aksessuary-dlya-samsung/" class=""></a></li>   
+    <li><a style="background-image: url(/catalog/view/theme/default/stylesheet/images/menu/Android.png);" href="#" class=""></a></li>   
+</ul>
+                        </div>
+                    </div>
+                 
+                </div>

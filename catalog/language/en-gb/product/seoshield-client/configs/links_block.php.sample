@@ -1,0 +1,4 @@
+<?php
+$GLOBALS['SEOSHIELD_CONFIG']['links_block_csv_update_time'] = '1416958752';
+$GLOBALS['SEOSHIELD_CONFIG']['html_comment_to_replace'] = '<!-- links_block -->';
+$GLOBALS['SEOSHIELD_CONFIG']['links_count'] = 4;
