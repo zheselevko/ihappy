@@ -232,8 +232,8 @@ class ControllerExtensionModuleCategory extends Controller {
 					'children'     => $children_data,
 					'href'         => $this->url->link('product/category', 'path=' . $category['category_id']),
 					'active'       => in_array($category['category_id'], $parts),
-					'thumb'        => $this->model_tool_image->resize($category['image'], $data['image_width'], $data['image_height']),
-					'icon_thumb'   => $this->model_tool_image->resize($category['menu_icon'], $data['icon_width'], $data['icon_height'])
+					'thumb'        => $this->model_tool_image->resize($category['image'], $data['image_width'], $data['image_height'])
+					// 'icon_thumb'   => $this->model_tool_image->resize($category['menu_icon'], $data['icon_width'], $data['icon_height'])
 					);
 			}
 
